@@ -1,0 +1,2 @@
+#change file type from analyse to nifti
+fslchfiletype NIFTI header_file_name_without_hdr
