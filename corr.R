@@ -3,14 +3,14 @@
 #args[1] is the file containing the correlation values
 #args[2] is the file containing the 4D data
 #args[3] is the output filename
+library('AnalyzeFMRI')
+print('library loaded')
 
 args <- commandArgs(trailingOnly = TRUE)
 f_name <- args[1]
 f_nii  <- args[2]
 out <- args[3]
 
-library('AnalyzeFMRI')
-print('library loaded')
 
 #f_name = 'conv_ampl_hrf_22050'
 
