@@ -2,7 +2,7 @@
 #and the time series of each voxels
 #args[1] is the file containing the correlation values
 #args[2] is the file containing the 4D data
-#args[3] is the output directory
+#args[3] is the output filename
 
 args <- commandArgs(trailingOnly = TRUE)
 f_name <- args[1]
@@ -39,7 +39,7 @@ corr <- vector(mode = "numeric", length = dim1*dim2*dim3)
 #for right shift of the f_name_numeric
 #f_name_numeric <- c(0, f_name_numeric[1:dim4])
 
-for (i in 1:dim1*dim2*dim3)
+for (i in 1:(dim1*dim2*dim3))
 {
 	corr[i] <- cor(run2ts2d[i, ], f_name_numeric, method = c("pearson"))
 }
@@ -53,4 +53,5 @@ rm(i)
 corr[is.na(corr)] = 0
 print('corr done')
 
-f.write.nifti(array(corr, dim = c(dim1, dim2, dim3, dim4)), file = paste(out, f_name, sep = '/'), size ='float', nii = FALSE)
+f.write.nifti(array(corr, dim = c(dim1, dim2, dim3)), file = out , size ='float', nii = FALSE)
+rm(corr)
