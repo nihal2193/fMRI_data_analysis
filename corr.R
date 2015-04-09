@@ -6,10 +6,10 @@
 library('AnalyzeFMRI')
 print('library loaded')
 
-args <- commandArgs(trailingOnly = TRUE)
-f_name <- args[1]
-f_nii  <- args[2]
-out <- args[3]
+args 	<- commandArgs(trailingOnly = TRUE)
+f_name 	<- args[1]
+f_nii  	<- args[2]
+out 	<- args[3]
 
 
 #f_name = 'conv_ampl_hrf_22050'

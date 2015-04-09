@@ -1,2 +1,14 @@
 #change file type from analyse to nifti
-fslchfiletype NIFTI header_file_name_without_hdr
+fslchfiletype NIFTI header_file_name_without_hdr_extension
+
+#threshold an image and make a binary mask
+fslmaths <input> -thr thr_value -bin output_image
+
+#use flirt to transform an image into another space
+flirt -in <input> -ref <ref_image> -applyxfm -init <matrix> -out <output>
+
+#apply a mask over a 4D image
+fslmaths <input> -mas <mask> <output>
+
+#find mean across volumes for each time points for non zero voxels
+fslstats -t <mask_image> -M  > <output>
